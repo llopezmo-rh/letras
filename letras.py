@@ -174,6 +174,8 @@ if __name__ == "__main__":
 
 	words_dict = generate_dict()
 	
+	print("Press Control+C to exit.")
+	
 	while True:
 		while True:
 			try:
@@ -190,7 +192,8 @@ if __name__ == "__main__":
 		
 		result_list = find_words(words_dict, letters)
 		
-		print("\n\nResults:")
+		result_length = len(result_list[0])
+		print(f"\n\nResults ({result_length} letters):")
 		for word in result_list:
 			print(word)
 		print()
