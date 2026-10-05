@@ -63,6 +63,9 @@ def generate_new_entries(file_line):
 			female_word = male_word[:-1] + "A"
 		else:
 			female_word = male_word + "A"
+			# Remove accent for entries like "patrón, na"
+			if female_word[-3] in "ÁÉÓ":
+				female_word = female_word[:-3] + normalize_word(female_word[-3]) + female_word[-2:]
 		normalized_male_word = normalize_word(male_word)
 		normalized_female_word = normalize_word(female_word)
 		male_key = "".join(sorted(normalized_male_word))
