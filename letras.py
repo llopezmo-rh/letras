@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import letters_generator
+
 import collections
 import json
 import re
@@ -179,11 +181,20 @@ if __name__ == "__main__":
 	while True:
 		while True:
 			try:
-				letters = input("Letters: ").strip().upper()
+				letters = input("Letters (ENTER for randomly generation): ").strip().upper()
 			# Exit if Control+C is pressed
 			except KeyboardInterrupt:
 				print("\nExiting...")
 				sys.exit(0)
+			if letters == "":
+				letters = letters_generator.generate_letters()
+				print(f"\n{letters}")
+				try:
+					input("Press ENTER to show the results...")
+				except KeyboardInterrupt:
+					print("\nExiting...")
+					sys.exit(0)
+				break
 			if re.fullmatch("[A-ZÑÁÉÍÓÚÜ]+", letters):
 				break
 			# Ask again for the letters if invalid characters are introduced
