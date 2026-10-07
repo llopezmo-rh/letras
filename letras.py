@@ -169,7 +169,7 @@ def find_words(words_dict, letters):
 					visited_keys.add(child_key)
 					key_queue.append((child_key, length - 1))
 	
-	return words
+	return sorted(words)
 
 
 if __name__ == "__main__":
@@ -201,7 +201,8 @@ if __name__ == "__main__":
 			else:
 				print("Invalid character/s detected. Introduce letters again")
 		
-		result_list = find_words(words_dict, letters)
+		# Convert first to set to delete any duplicated word
+		result_list = sorted(list(set(find_words(words_dict, letters))))
 		
 		result_length = len(result_list[0])
 		print(f"\n\nResults ({result_length} letters):")
